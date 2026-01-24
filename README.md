@@ -24,7 +24,6 @@ Ce projet vise à automatiser la configuration et la gestion d’équipements r�
 ## 🗂️ Structure du Projet
 ```text
 Ansible-Project/
-├── ansible.cfg
 ├── inventory/
 │   └── inventory.ini
 ├── playbooks/
