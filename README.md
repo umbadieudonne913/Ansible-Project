@@ -17,7 +17,10 @@ Ce projet vise à automatiser la configuration et la gestion d’équipements r�
 * **Outil d’automatisation** : Ansible  
 * **Équipements réseau** : Cisco IOS (simulés)  
 * **Protocole de gestion** : SSH  
-* **Méthode de connexion** : `network_cli`  
+* **Méthode de connexion** : `network_cli`
+---
+* **Voici la topologie du réseau simulé dans GNS3.**
+![Texte alternatif](screenshots/topologie.png)  
 ---
 ## 🗂️ Structure du Projet
 ```text
@@ -54,30 +57,34 @@ ansible-automation/
 Playbook utilisé : **ping.yaml**
 * **Résultat**
 ![Texte alternatif](screenshots/ping_ok.png)
-  
+
 ----
 ### 2. Collecte des Informations (Facts)
 * **Description** : Ce playbook permet de collecter automatiquement la version du système IOS et le numéro de série des équipements.
 Les résultats sont sauvegardés dans le dossier facts_resultats/.
 Playbook utilisé : **get_facts.yaml**
-* **Résultat**  
+* **Résultat**
+![Texte alternatif](screenshots/facts.png)   
 ----
 ### 3. Sauvegarde des Configurations
 * **Description** : La configuration courante (running-config) de chaque équipement est sauvegardée
 automatiquement dans un seul dossier horodaté sur le contrôleur Ansible.
 Playbook utilisé : **save_config.yaml**
-* **Résultat**  
+* **Résultat**
+![Texte alternatif](screenshots/save_ok.png)   
 ----
 ### 4️. Configuration du Serveur de Temps (NTP)
 * **Description** : Une configuration NTP uniforme est appliquée afin d’assurer une synchronisation correcte
 de l’horloge sur tous les équipements réseau.
 Playbook utilisé : **configure_ntp.yaml**
-* **Résultat**  
+* **Résultat**
+![Texte alternatif](screenshots/ntp.png)  
 ----
 ### 5. Gestion des Utilisateurs et Sécurité
 * **Description** : Ce playbook assure la création d’un utilisateur administrateur sécurisé, l’application d’un mot de passe chiffré ainsi que l’activation de l’accès SSH.
 Playbook utilisé : **user_security.yaml**
-* **Résultat**  
+* **Résultat**
+![Texte alternatif](screenshots/user_ok.png)  
 ----
 ### 6. Déploiement des VLANs
 * **Description** : Les VLANs sont déployés uniquement sur les commutateurs via une boucle Ansible ( VLAN 10 : Data, VLAN 20 : Voice et VLAN 30 : Management)
@@ -88,22 +95,30 @@ Playbook utilisé : **deploy_vlans.yaml**
 * **Description** : Les interfaces réseau sont configurées automatiquement à partir des fichiers
 host_vars/ spécifiques à chaque équipement.
 Playbook utilisé : **configure_interfaces.yaml**
-* **Résultat**  
+* **Résultat**
+![Texte alternatif](screenshots/interfaces_ok.png)   
 ----
 ### 8. Bannière MOTD avec Templates Jinja2
 * **Description** : Une bannière MOTD dynamique est déployée via Jinja2, affichant le nom de l’équipement et le message de bienvenue de l'entreprise
 Playbook utilisé : **configure_banner.yaml**
-* **Résultat**  
+* **Résultat**
+![Texte alternatif](screenshots/banner_ok.png)
 ----
 ### 9. Audit de Conformité SNMP
 * **Description** : Ce playbook vérifie la conformité de la configuration SNMP. En cas de non-conformité, il échoue ou corrige automatiquement.
 Playbook utilisé : **audit_snmp.yaml**
-* **Résultat**  
+* **Résultat**
+![Texte alternatif](screenshots/snmp_ok.png) 
 ----
 ### 10. Rapport Final
 * **Description** : À la fin de l’exécution, un rapport récapitulatif est généré automatiquement afin de
 présenter l’état global de l’automatisation.
 Playbook utilisé : **final_report.yaml**
+* **Résultat**
+![Texte alternatif](screenshots/report_ok.png)
+----
+* **Ce rapport liste les équipements mis à jour avec succès.**
+![Texte alternatif](screenshots/report_resultat.png)
 ----
 ## Conclusion
 Ce projet démontre l’efficacité d’Ansible dans l’automatisation des infrastructures réseau.
