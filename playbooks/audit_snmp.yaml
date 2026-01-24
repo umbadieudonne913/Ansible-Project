@@ -1,0 +1,26 @@
+---
+- name: Audit de conformité SNMP
+  hosts: routers,switchs
+  gather_facts: no
+  connection: network_cli
+
+  vars:
+    snmp_community: "public"
+
+  tasks:
+    - name: Vérifier si SNMP est activé
+      ios_command:
+        commands:
+          - "show running-config | include snmp-server"
+      register: snmp_status
+
+    - name: Échec si SNMP n'est pas activé
+      fail:
+        msg: " SNMP n'est pas activé sur {{ inventory_hostname }}. Veuillez corriger la configuration."
+      when: snmp_status.stdout[0] == ""
+
+    - name: Corriger la configuration SNMP si absent
+      ios_config:
+        lines:
+          - "snmp-server community {{ snmp_community }} RO"
+      when: snmp_status.stdout[0] == ""

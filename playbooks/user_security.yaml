@@ -1,0 +1,36 @@
+---
+- name: Gestion des utilisateurs et sécurité IOS
+  hosts: routers,switchs
+  gather_facts: no
+  connection: network_cli
+
+  vars:
+    admin_user: "dieudonne"
+    admin_password: "devnet2026"
+
+  tasks:
+    - name: Créer ou vérifier l'utilisateur administrateur
+      ios_config:
+        lines:
+          - "username {{ admin_user }} privilege 15 secret {{ admin_password }}"
+        match: line
+
+    - name: Activer l'accès SSH
+      ios_config:
+        lines:
+          - "ip domain-name projet-devnet.com"
+          - "ip ssh version 2"
+
+    - name: Configurer les lignes VTY pour SSH
+      ios_config:
+        lines:
+          - "transport input ssh"
+          - "login local"
+        parents: "line vty 0 4"
+
+    - name: Vérifier la configuration SSH
+      ios_command:
+        commands:
+          - "show ip ssh"
+          - "show running-config | include username"
+

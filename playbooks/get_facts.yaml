@@ -1,0 +1,24 @@
+---
+- name: Collecte des informations IOS et numéro de série
+  hosts: routers,switchs
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Récupérer les facts des équipements Cisco IOS
+      cisco.ios.ios_facts:
+      register: ios_facts
+
+    - name: Créer le dossier facts_resultats s'il n'existe pas
+      file:
+        path: "{{ playbook_dir }}/../facts_resultats"
+        state: directory
+      run_once: true
+      delegate_to: localhost
+
+    - name: Sauvegarder version et numéro de série dans un fichier texte
+      lineinfile:
+        path: "{{ playbook_dir }}/../facts_resultats/facts_resultats.txt"
+        line: "{{ inventory_hostname }} - Version: {{ ios_facts.ansible_facts.ansible_net_version }} - Serial: {{ ios_facts.ansible_facts.ansible_net_serialnum }}"
+        create: yes
+      delegate_to: localhost

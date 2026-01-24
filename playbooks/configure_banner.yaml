@@ -1,0 +1,20 @@
+---
+- name: Déploiement de la bannière MOTD sur les équipements
+  hosts: routers,switchs
+  gather_facts: no
+  connection: network_cli
+
+  vars:
+    company_message: "Bienvenue chez DevNet RDC 2026"
+    student1: "Dieudonné UMBA"
+    student2: "Sharon-rose ILUNGA"
+
+  tasks:
+    - name: Configurer la bannière MOTD avec Jinja2
+      ios_config:
+        lines: "{{ lookup('template', playbook_dir + '/../templates/motd_banner.j2') }}"
+
+    - name: Vérifier la bannière MOTD
+      ios_command:
+        commands:
+          - "show running-config | include banner"

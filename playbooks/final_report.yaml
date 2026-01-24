@@ -1,0 +1,31 @@
+---
+- name: Génération du rapport d'état final
+  hosts: routers,switchs
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Marquer les hôtes traités
+      set_fact:
+        updated_hosts: "{{ updated_hosts | default([]) + [inventory_hostname] }}"
+
+    # Cette tâche récupère la liste complète depuis tous les hôtes
+    - name: Centraliser la liste des équipements
+      set_fact:
+        all_updated_hosts: "{{ ansible_play_hosts }}"
+      run_once: true
+      delegate_to: localhost
+
+    - name: Créer le dossier de rapport
+      file:
+        path: "{{ playbook_dir }}/../reports"
+        state: directory
+      run_once: true
+      delegate_to: localhost
+
+    - name: Générer le rapport HTML
+      template:
+        src: "{{ playbook_dir }}/../templates/report.j2"
+        dest: "{{ playbook_dir }}/../reports/final_report.html"
+      run_once: true
+      delegate_to: localhost

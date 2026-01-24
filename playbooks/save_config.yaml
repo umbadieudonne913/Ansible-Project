@@ -1,0 +1,30 @@
+---
+- name: Sauvegarde des configurations IOS
+  hosts: routers,switchs
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Générer un horodatage unique (pour le dossier)
+      delegate_to: localhost
+      set_fact:
+        backup_timestamp: "{{ lookup('pipe','date +%Y-%m-%d_%H-%M-%S') }}"
+        cacheable: true
+
+    - name: Créer un dossier horodaté pour toutes les sauvegardes (racine/backups)
+      delegate_to: localhost
+      file:
+        path: "{{ playbook_dir }}/../backups/{{ backup_timestamp }}"
+        state: directory
+      run_once: true
+
+    - name: Récupérer la configuration en cours et sauvegarder
+      cisco.ios.ios_config:
+        backup: yes
+      register: backup_result
+
+    - name: Copier la configuration dans le dossier horodaté unique
+      delegate_to: localhost
+      copy:
+        src: "{{ backup_result.backup_path }}"
+        dest: "{{ playbook_dir }}/../backups/{{ backup_timestamp }}/{{ inventory_hostname }}.cfg"

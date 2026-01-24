@@ -1,0 +1,22 @@
+---
+- name: Configuration des interfaces IP sur les routeurs
+  hosts: routers
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Charger les variables host_vars
+      include_vars: "../host_vars/{{ inventory_hostname }}.yaml"
+
+    - name: Configurer les interfaces avec IP depuis host_vars
+      ios_config:
+        parents: "interface {{ item.name }}"
+        lines:
+          - "ip address {{ item.ip }} {{ item.mask }}"
+          - "no shutdown"
+      loop: "{{ interfaces }}"
+
+    - name: Vérifier la configuration des interfaces
+      ios_command:
+        commands:
+          - "show ip interface brief"

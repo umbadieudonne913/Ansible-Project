@@ -1,0 +1,17 @@
+---
+- name: Déploiement NTP uniforme sur tous les routeurs et switchs
+  hosts: routers,switchs
+  gather_facts: no
+  connection: network_cli
+
+  vars:
+    ntp_servers:
+      - "cd.pool.ntp.org"
+
+  tasks:
+    - name: Configurer les serveurs NTP via ios_config
+      ios_config:
+        lines:
+          - "ntp server {{ item }}"
+      loop: "{{ ntp_servers }}"
+
