@@ -18,13 +18,12 @@ Ce projet vise à automatiser la configuration et la gestion d’équipements r�
 * **Équipements réseau** : Cisco IOS (simulés)  
 * **Protocole de gestion** : SSH  
 * **Méthode de connexion** : `network_cli`
----
 * **Voici la topologie du réseau simulé dans GNS3.**
 ![Texte alternatif](screenshots/topologie.png)  
 ---
 ## 🗂️ Structure du Projet
 ```text
-ansible-automation/
+Ansible-Project/
 ├── ansible.cfg
 ├── inventory/
 │   └── inventory.ini
@@ -89,7 +88,8 @@ Playbook utilisé : **user_security.yaml**
 ### 6. Déploiement des VLANs
 * **Description** : Les VLANs sont déployés uniquement sur les commutateurs via une boucle Ansible ( VLAN 10 : Data, VLAN 20 : Voice et VLAN 30 : Management)
 Playbook utilisé : **deploy_vlans.yaml**
-* **Résultat**  
+* **Résultat**
+ ![Texte alternatif](screenshots/vlan_ok.png)   
 ----
 ### 7. Configuration des Interfaces
 * **Description** : Les interfaces réseau sont configurées automatiquement à partir des fichiers
