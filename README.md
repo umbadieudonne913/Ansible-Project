@@ -52,7 +52,9 @@ ansible-automation/
  ### 1. Inventaire et Connectivité
 * **Description** : Un inventaire Ansible a été créé pour regrouper les équipements réseau par groupes (routers et switches) La connectivité SSH est testée sur tous les équipements réseau.
 Playbook utilisé : **ping.yaml**
-* **Résultat**  
+* **Résultat**
+![Texte alternatif](screenshots/ping_ok.png)
+  
 ----
 ### 2. Collecte des Informations (Facts)
 * **Description** : Ce playbook permet de collecter automatiquement la version du système IOS et le numéro de série des équipements.
