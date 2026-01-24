@@ -1,5 +1,5 @@
 ---
-- name: Test de connectivité des routeurs
+- name: Test de connectivité des routeurs et switchs
   hosts: routers,switchs
   gather_facts: no
   tasks:
