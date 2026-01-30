@@ -12,7 +12,6 @@ Ce projet vise à automatiser la configuration et la gestion d’équipements r�
 * **Réduire les erreurs** humaines.
 * **Simplifier l’administration**, la sauvegarde et l’audit du réseau.
 
-----
 ## Environnement de Travail
 * **Contrôleur Ansible** : Ubuntu Linux  
 * **Outil d’automatisation** : Ansible  
