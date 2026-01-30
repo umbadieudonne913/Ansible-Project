@@ -5,13 +5,14 @@
 * **Filière** : DevOps et Sécurité informatique
 * **Promotion** : Master 2
 * **Année académique** : 2025 – 2026  
----
+
 ## Objectif du Projet
 Ce projet vise à automatiser la configuration et la gestion d’équipements réseau (**routeurs et commutateurs Cisco IOS**) à l’aide d’Ansible afin de :
 * **Garantir la cohérence** des configurations.
 * **Réduire les erreurs** humaines.
 * **Simplifier l’administration**, la sauvegarde et l’audit du réseau.
----
+
+----
 ## Environnement de Travail
 * **Contrôleur Ansible** : Ubuntu Linux  
 * **Outil d’automatisation** : Ansible  
@@ -19,10 +20,10 @@ Ce projet vise à automatiser la configuration et la gestion d’équipements r�
 * **Protocole de gestion** : SSH  
 * **Méthode de connexion** : `network_cli`
 
----
  ## Topologie du réseau simulé dans GNS3
 ![Texte alternatif](screenshots/topologie.png)  
----
+
+----
 ## 🗂️ Structure du Projet
 ```text
 Ansible-Project/
@@ -69,6 +70,7 @@ Playbook utilisé : **get_facts.yaml**
 * **Résultat**
   
 ![Texte alternatif](screenshots/facts.png)   
+
 ----
 ### 3. Sauvegarde des Configurations
 * **Description** : La configuration courante (running-config) de chaque équipement est sauvegardée
@@ -77,6 +79,7 @@ Playbook utilisé : **save_config.yaml**
 * **Résultat**
   
 ![Texte alternatif](screenshots/save_ok.png)   
+
 ----
 ### 4️. Configuration du Serveur de Temps (NTP)
 * **Description** : Une configuration NTP uniforme est appliquée afin d’assurer une synchronisation correcte
@@ -85,6 +88,7 @@ Playbook utilisé : **configure_ntp.yaml**
 * **Résultat**
   
 ![Texte alternatif](screenshots/ntp.png)  
+
 ----
 ### 5. Gestion des Utilisateurs et Sécurité
 * **Description** : Ce playbook assure la création d’un utilisateur administrateur sécurisé, l’application d’un mot de passe chiffré ainsi que l’activation de l’accès SSH.
