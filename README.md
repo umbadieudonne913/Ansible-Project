@@ -18,7 +18,9 @@ Ce projet vise à automatiser la configuration et la gestion d’équipements r�
 * **Équipements réseau** : Cisco IOS (simulés)  
 * **Protocole de gestion** : SSH  
 * **Méthode de connexion** : `network_cli`
-* **Voici la topologie du réseau simulé dans GNS3.**
+
+---
+ ## Topologie du réseau simulé dans GNS3
 ![Texte alternatif](screenshots/topologie.png)  
 ---
 ## 🗂️ Structure du Projet
