@@ -1,4 +1,4 @@
-# Projet : Automatisation d’une Infrastructure Réseau Multi-Services avec Ansible
+# Projet DevNet : Automatisation d’une Infrastructure Réseau Multi-Services avec Ansible
 
 ## 👤 Auteurs
 * **Travail réalisé par** : Dieudonné UMBA  et Sharon-rose MUKUNDI 
