@@ -22,7 +22,6 @@ Ce projet vise à automatiser la configuration et la gestion d’équipements r�
  ## Topologie du réseau simulé dans GNS3
 ![Texte alternatif](screenshots/topologie.png)  
 
-----
 ## 🗂️ Structure du Projet
 ```text
 Ansible-Project/
@@ -51,7 +50,7 @@ Ansible-Project/
 ├── facts_resultats/
 └── README.md
 ```
----
+
 ## Test (résultats obtenus)
 
  ### 1. Inventaire et Connectivité
@@ -60,7 +59,6 @@ Playbook utilisé : **ping.yaml**
 * **Résultat**
   
 ![Texte alternatif](screenshots/ping_ok.png)
-
 ----
 ### 2. Collecte des Informations (Facts)
 * **Description** : Ce playbook permet de collecter automatiquement la version du système IOS et le numéro de série des équipements.
@@ -69,7 +67,6 @@ Playbook utilisé : **get_facts.yaml**
 * **Résultat**
   
 ![Texte alternatif](screenshots/facts.png)   
-
 ----
 ### 3. Sauvegarde des Configurations
 * **Description** : La configuration courante (running-config) de chaque équipement est sauvegardée
@@ -78,7 +75,6 @@ Playbook utilisé : **save_config.yaml**
 * **Résultat**
   
 ![Texte alternatif](screenshots/save_ok.png)   
-
 ----
 ### 4️. Configuration du Serveur de Temps (NTP)
 * **Description** : Une configuration NTP uniforme est appliquée afin d’assurer une synchronisation correcte
@@ -87,7 +83,6 @@ Playbook utilisé : **configure_ntp.yaml**
 * **Résultat**
   
 ![Texte alternatif](screenshots/ntp.png)  
-
 ----
 ### 5. Gestion des Utilisateurs et Sécurité
 * **Description** : Ce playbook assure la création d’un utilisateur administrateur sécurisé, l’application d’un mot de passe chiffré ainsi que l’activation de l’accès SSH.
