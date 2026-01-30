@@ -50,6 +50,8 @@ Ansible-Project/
 └── README.md
 ```
 ---
+## Test (résultats obtenus)
+
  ### 1. Inventaire et Connectivité
 * **Description** : Un inventaire Ansible a été créé pour regrouper les équipements réseau par groupes (routers et switches) La connectivité SSH est testée sur tous les équipements réseau.
 Playbook utilisé : **ping.yaml**
