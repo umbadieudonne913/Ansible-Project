@@ -58,6 +58,7 @@ Ansible-Project/
 * **Description** : Un inventaire Ansible a été créé pour regrouper les équipements réseau par groupes (routers et switches) La connectivité SSH est testée sur tous les équipements réseau.
 Playbook utilisé : **ping.yaml**
 * **Résultat**
+  
 ![Texte alternatif](screenshots/ping_ok.png)
 
 ----
